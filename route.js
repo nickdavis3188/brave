@@ -37,7 +37,7 @@ router.post("/register",upload1.single("myFile"),function(req,res){
                             email:email,
                             userName:userName,
                             pwd:hash,
-                            img: "https://braveharted.herokuapp.com/uploads/" + req.file.filename,
+                            img: "https://braveblog2.herokuapp.com/uploads/" + req.file.filename,
                             isAdmin:false
                         }
                         const dbShema = new UserSchema(data)
@@ -230,7 +230,7 @@ router.post("/admini",upload2.single("myFiles"),(req,res) =>{
     const data = {
         title:title.toUpperCase(),
         body:body,
-        file:process.env.SERVER_URL+ "uploads/" + req.file.filename,
+        file:"https://braveblog2.herokuapp.com/uploads/" + req.file.filename,
         comment:[]
     }
     const postDb = new PostSchema(data)
@@ -373,7 +373,7 @@ router.post("/forgot",function(req,res){
                             subject:"Reset password",
                             text:`you are receiving this because you (or someone else) have requested the reset of password \n,
                                 please click the on the following link paste it into your browser to complete the process \n
-                                ${process.env.SERVER_URL}resetPWD#${token} \n\n
+                                https://braveblog2.herokuapp.com/resetPWD#${token} \n\n
                                 if you did not request this, please ignore this email and your password will remaind unchange.
                                 `
                             }
